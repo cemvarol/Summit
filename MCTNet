@@ -1,31 +1,35 @@
 {
     "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
-    "parameters": {
-        "name": {
-            "type": "string"
-        },
-        "location": {
-            "type": "string"
-        },
-        "addressPrefix": {
-            "type": "string"
-        },
-        "subnetName": {
-            "type": "string"
-        },
-        "subnetAddressPrefix": {
-            "type": "string"
-        },
-        "enableDdosProtection": {
-            "type": "string"
-        }
+    {
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "name": {
+      "value": "MCTNet"
     },
+    "location": {
+      "value": "southeastasia"
+    },
+    "addressPrefix": {
+      "value": "10.1.0.0/24"
+    },
+    "subnetName": {
+      "value": "Subnet01"
+    },
+    "subnetAddressPrefix": {
+      "value": "10.1.0.0/25"
+    },
+    "enableDdosProtection": {
+      "value": "false"
+    }
+  }
+},
     "resources": [
         {
-            "apiVersion": "2017-08-01",
-            "name": "[parameters('name')]",
             "type": "Microsoft.Network/virtualNetworks",
+            "name": "[parameters('name')]",
+            "apiVersion": "2017-08-01",
             "location": "[parameters('location')]",
             "properties": {
                 "addressSpace": {
